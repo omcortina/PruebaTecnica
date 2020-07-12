@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Views.AgregarCancion"></activity>
+        <activity android:name=".Views.DetalleCancion"
+            android:parentActivityName=".Views.ListaCanciones"></activity>
+        <activity android:name=".Views.AgregarCancion" />
         <activity android:name=".Views.ListaCanciones">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

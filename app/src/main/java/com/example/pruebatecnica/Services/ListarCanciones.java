@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.pruebatecnica.BD.Database;
+import com.example.pruebatecnica.Config.Config;
 import com.example.pruebatecnica.Models.Playlist;
 import com.example.pruebatecnica.Recyclers.RecyclerCanciones;
 import com.example.pruebatecnica.Views.ListaCanciones;
@@ -69,10 +70,10 @@ public class ListarCanciones extends AsyncTask<Void,Void,String> {
                 jo = new JSONObject(json);
 
 
-                Database bd = new Database(context, "pruebaTecnica", null, 1);
+                Database bd = new Database(context, Config.database_name, null, 1);
                 SQLiteDatabase db = bd.getWritableDatabase();
 
-                db.execSQL("DELETE FROM Playlist where album = 'sin definir'");
+                db.execSQL("DELETE FROM Playlist where album <> 'sin definir'");
                 db.close();
 
                 JSONObject json_canciones = null;
@@ -82,12 +83,13 @@ public class ListarCanciones extends AsyncTask<Void,Void,String> {
                 JSONArray array_canciones = json_canciones.getJSONArray("track");
 
                 for (int i=0; i<array_canciones.length();i++){
-                    JSONObject r = array_canciones.getJSONObject(i);
+                    JSONObject cancion = array_canciones.getJSONObject(i);
                     Playlist playlist = new Playlist();
-                    playlist.Nombre = r.getString("name");
-                    JSONObject jo_artista = r.getJSONObject("artist");
-                    playlist.Artista = jo_artista.getString("name");
-                    playlist.Album = "sin definir";
+                    playlist.setNombre(cancion.getString("name"));
+                    JSONObject artista = cancion.getJSONObject("artist");
+                    playlist.setArtista(artista.getString("name"));
+                    playlist.setOyentes(cancion.getString("listeners"));
+                    playlist.setAlbum("");
                     playlist.Save(this.context);
                 }
                 this.error = false;

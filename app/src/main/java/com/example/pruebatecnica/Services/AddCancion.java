@@ -80,8 +80,9 @@ public class AddCancion extends AsyncTask<Void,Void,String> {
                 for (int i=0; i<array_canciones.length();i++){
 
                     JSONObject cancion = array_canciones.getJSONObject(i);
-                    playlist.Nombre = cancion.getString("name");
-                    playlist.Artista = cancion.getString("artist");
+                    playlist.setNombre(cancion.getString("name"));
+                    playlist.setArtista(cancion.getString("artist"));
+                    playlist.setOyentes(cancion.getString("listeners"));
                     return "ok";
                 }
                 this.error = false;
@@ -122,8 +123,9 @@ public class AddCancion extends AsyncTask<Void,Void,String> {
             AgregarCancion.my_activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    AgregarCancion.txt_nombre_cancion.setText(playlist.Nombre);
-                    AgregarCancion.txt_artista_cancion.setText(playlist.Artista);
+                    AgregarCancion.txt_nombre_cancion.setText(playlist.getNombre());
+                    AgregarCancion.txt_artista_cancion.setText(playlist.getArtista());
+                    AgregarCancion.txt_oyentes.setText(playlist.getOyentes());
                 }
             });
         }else{

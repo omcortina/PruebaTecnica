@@ -17,7 +17,8 @@ public class Database extends SQLiteOpenHelper {
                 "id_playlist integer primary key autoincrement," +
                 "nombre_cancion text," +
                 "artista text," +
-                "album text" +
+                "album text," +
+                "oyentes text" +
                 ")");
     }
 

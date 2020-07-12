@@ -1,6 +1,7 @@
 package com.example.pruebatecnica.Views;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.pruebatecnica.Models.Playlist;
 import com.example.pruebatecnica.R;
 import com.example.pruebatecnica.Services.ListarCanciones;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

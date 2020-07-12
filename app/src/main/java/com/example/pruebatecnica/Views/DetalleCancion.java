@@ -22,9 +22,9 @@ public class DetalleCancion extends AppCompatActivity {
         int id_cancion = getIntent().getIntExtra("id_cancion", 0);
         if(id_cancion != 0){
             playlist = Playlist.Find(this, id_cancion);
-            txt_detalle_nombre.setText(playlist.getNombre());
-            txt_detalle_artista.setText(playlist.getArtista());
-            txt_detalle_oyentes.setText(playlist.getOyentes());
+            txt_detalle_nombre.setText("Nombre cancion: "+playlist.getNombre());
+            txt_detalle_artista.setText("Artista: "+playlist.getArtista());
+            txt_detalle_oyentes.setText("Oyentes: "+playlist.getOyentes());
         }
     }
 }
